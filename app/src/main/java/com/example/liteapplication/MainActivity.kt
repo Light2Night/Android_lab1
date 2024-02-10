@@ -73,8 +73,8 @@ fun Body() {
                 painter = userImage,
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .width(51.dp)
-                    .height(51.dp)
+                    .width(70.dp)
+                    .height(70.dp)
                     .padding(10.dp)
             )
         }
@@ -115,16 +115,16 @@ fun YellowCard(painter: Painter) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(92.dp)
-                .background(Color(219, 234, 141), RoundedCornerShape(16.dp)),
+                .background(Color(219, 234, 141), RoundedCornerShape(24.dp)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
                 painter = painter,
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .width(44.dp)
-                    .height(44.dp)
-                    .padding(10.dp)
+                    .width(50.dp)
+                    .height(50.dp)
+                    .padding(14.dp)
             )
 
             Column(
@@ -133,13 +133,13 @@ fun YellowCard(painter: Painter) {
                 Text(
                     text = "Get to know your Pixel",
                     modifier = Modifier
-                        .padding(4.dp),
+                        .padding(0.dp, 4.dp),
                     fontSize = 21.sp
                 )
                 Text(
                     text = "Explore what you can do with your phone",
                     modifier = Modifier
-                        .padding(4.dp),
+                        .padding(0.dp, 4.dp),
                     fontSize = 14.sp
                 )
             }
@@ -156,24 +156,24 @@ fun SearchLine(painter: Painter) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(32.dp)
-                .background(Color.White, RoundedCornerShape(16.dp)),
+                .height(48.dp)
+                .background(Color.White, RoundedCornerShape(24.dp)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
                 painter = painter,
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .width(40.dp)
-                    .height(40.dp)
-                    .padding(6.dp)
+                    .width(50.dp)
+                    .height(50.dp)
+                    .padding(14.dp)
             )
 
             Text(
                 text = "Search settings...",
                 modifier = Modifier
-                    .padding(4.dp),
-                fontSize = 12.sp
+                    .padding(0.dp, 4.dp),
+                fontSize = 20.sp
             )
         }
     }
@@ -190,14 +190,19 @@ fun SettingsElement(painter: Painter, title: String, text: String) {
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = painter,
-                contentDescription = "Logo",
+            Box(
                 modifier = Modifier
-                    .width(50.dp)
-                    .height(50.dp)
-                    .padding(10.dp)
-            )
+                    .background(Color(226, 227, 216), RoundedCornerShape(40.dp))
+            ) {
+                Image(
+                    painter = painter,
+                    contentDescription = "Logo",
+                    modifier = Modifier
+                        .width(50.dp)
+                        .height(50.dp)
+                        .padding(14.dp)
+                )
+            }
 
             Column(
                 verticalArrangement = Arrangement.Center
@@ -206,13 +211,13 @@ fun SettingsElement(painter: Painter, title: String, text: String) {
                     text = title,
                     modifier = Modifier
                         .padding(4.dp),
-                    fontSize = 12.sp
+                    fontSize = 20.sp
                 )
                 Text(
                     text = text,
                     modifier = Modifier
                         .padding(4.dp),
-                    fontSize = 8.sp
+                    fontSize = 14.sp
                 )
             }
         }
