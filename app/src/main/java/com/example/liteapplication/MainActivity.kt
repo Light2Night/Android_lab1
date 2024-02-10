@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.liteapplication.ui.theme.LiteApplicationTheme
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.LightGray
                 ) {
-                    Body()
+                    Body(12.dp)
                 }
             }
         }
@@ -49,7 +50,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Body() {
+fun Body(itemsDp: Dp) {
     val userImage = painterResource(R.drawable.ellipse_54);
     val settingsImage = painterResource(R.drawable.phonelink_setup);
     val searchImage = painterResource(R.drawable.search);
@@ -75,13 +76,13 @@ fun Body() {
                 modifier = Modifier
                     .width(70.dp)
                     .height(70.dp)
-                    .padding(10.dp)
+                    .padding(itemsDp)
             )
         }
 
         Box(
             modifier = Modifier
-                .padding(10.dp)
+                .padding(itemsDp)
         ) {
             Text(
                 text = "Settings",
@@ -89,27 +90,33 @@ fun Body() {
             )
         }
 
-        YellowCard(settingsImage)
+        YellowCard(settingsImage, itemsDp)
 
-        SearchLine(searchImage)
+        SearchLine(searchImage, itemsDp)
 
-        SettingsElement(wifiImage, "Network & Internet", "Wi-Fi, Mobile, Data using, Hotspot")
-        SettingsElement(devicesImage, "Connected devices", "Bluetooth, Cast, NFC")
-        SettingsElement(appsImage, "App", "Permissions, default, apps")
-        SettingsElement(notificationImage, "Notifications", "Permissions, default apps")
+        SettingsElement(
+            wifiImage,
+            "Network & Internet",
+            "Wi-Fi, Mobile, Data using, Hotspot",
+            itemsDp
+        )
+        SettingsElement(devicesImage, "Connected devices", "Bluetooth, Cast, NFC", itemsDp)
+        SettingsElement(appsImage, "App", "Permissions, default, apps", itemsDp)
+        SettingsElement(notificationImage, "Notifications", "Permissions, default apps", itemsDp)
         SettingsElement(
             accessibilityImage,
             "Digital wellbeing",
-            "Screen time, app, timer, bedtime, schedules"
+            "Screen time, app, timer, bedtime, schedules",
+            itemsDp
         )
     }
 }
 
 @Composable
-fun YellowCard(painter: Painter) {
+fun YellowCard(painter: Painter, itemsDp: Dp) {
     Box(
         modifier = Modifier
-            .padding(10.dp)
+            .padding(itemsDp)
     ) {
         Row(
             modifier = Modifier
@@ -148,10 +155,10 @@ fun YellowCard(painter: Painter) {
 }
 
 @Composable
-fun SearchLine(painter: Painter) {
+fun SearchLine(painter: Painter, itemsDp: Dp) {
     Box(
         modifier = Modifier
-            .padding(10.dp, 0.dp, 10.dp, 10.dp)
+            .padding(itemsDp, 0.dp, itemsDp, itemsDp)
     ) {
         Row(
             modifier = Modifier
@@ -180,10 +187,10 @@ fun SearchLine(painter: Painter) {
 }
 
 @Composable
-fun SettingsElement(painter: Painter, title: String, text: String) {
+fun SettingsElement(painter: Painter, title: String, text: String, itemsDp: Dp) {
     Box(
         modifier = Modifier
-            .padding(10.dp)
+            .padding(itemsDp)
     ) {
         Row(
             modifier = Modifier
@@ -224,18 +231,10 @@ fun SettingsElement(painter: Painter, title: String, text: String) {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    LiteApplicationTheme {
-//        Greeting("Android")
-//    }
-//}
-
 @Preview(showBackground = true)
 @Composable
 fun BodyPreview() {
     LiteApplicationTheme {
-        Body()
+        Body(12.dp)
     }
 }
