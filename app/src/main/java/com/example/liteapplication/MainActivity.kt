@@ -1,13 +1,11 @@
 package com.example.liteapplication
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,7 +23,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,12 +50,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Body() {
-    val bitmap =
-        BitmapFactory.decodeFile("C:\\Users\\ipz\\Pictures\\Saved Pictures\\Зображення1.jpg")
+    val userImage = painterResource(R.drawable.ellipse_54);
+    val settingsImage = painterResource(R.drawable.phonelink_setup);
+    val searchImage = painterResource(R.drawable.search);
+    val wifiImage = painterResource(R.drawable.wifi);
+    val devicesImage = painterResource(R.drawable.devices_other);
+    val appsImage = painterResource(R.drawable.apps);
+    val notificationImage = painterResource(R.drawable.notifications_none);
+    val accessibilityImage = painterResource(R.drawable.accessibility);
 
     Column(
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(Color(237, 239, 227))
             .fillMaxHeight()
     ) {
         Row(
@@ -65,7 +70,7 @@ fun Body() {
             horizontalArrangement = Arrangement.End
         ) {
             Image(
-                bitmap = bitmap.asImageBitmap(),
+                painter = userImage,
                 contentDescription = "Logo",
                 modifier = Modifier
                     .width(51.dp)
@@ -80,24 +85,28 @@ fun Body() {
         ) {
             Text(
                 text = "Settings",
-                fontSize = 20.sp
+                fontSize = 36.sp
             )
         }
 
-        YellowCard(bitmap)
+        YellowCard(settingsImage)
 
-        SearchLine(bitmap)
+        SearchLine(searchImage)
 
-        SettingsElement(bitmap, "Network & Internet", "Wi-Fi, Mobile, Data using, Hotspot")
-        SettingsElement(bitmap, "Connected devices", "Bluetooth, Cast, NFC")
-        SettingsElement(bitmap, "App", "Permissions, default, apps")
-        SettingsElement(bitmap, "Notifications", "Permissions, default apps")
-        SettingsElement(bitmap, "Digital wellbeing", "Screen time, app, timer, bedtime, schedules")
+        SettingsElement(wifiImage, "Network & Internet", "Wi-Fi, Mobile, Data using, Hotspot")
+        SettingsElement(devicesImage, "Connected devices", "Bluetooth, Cast, NFC")
+        SettingsElement(appsImage, "App", "Permissions, default, apps")
+        SettingsElement(notificationImage, "Notifications", "Permissions, default apps")
+        SettingsElement(
+            accessibilityImage,
+            "Digital wellbeing",
+            "Screen time, app, timer, bedtime, schedules"
+        )
     }
 }
 
 @Composable
-fun YellowCard(bitmap: Bitmap) {
+fun YellowCard(painter: Painter) {
     Box(
         modifier = Modifier
             .padding(10.dp)
@@ -105,16 +114,16 @@ fun YellowCard(bitmap: Bitmap) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(60.dp)
-                .background(Color.Yellow, RoundedCornerShape(16.dp)),
+                .height(92.dp)
+                .background(Color(219, 234, 141), RoundedCornerShape(16.dp)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                bitmap = bitmap.asImageBitmap(),
+                painter = painter,
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .width(40.dp)
-                    .height(40.dp)
+                    .width(44.dp)
+                    .height(44.dp)
                     .padding(10.dp)
             )
 
@@ -125,13 +134,13 @@ fun YellowCard(bitmap: Bitmap) {
                     text = "Get to know your Pixel",
                     modifier = Modifier
                         .padding(4.dp),
-                    fontSize = 12.sp
+                    fontSize = 21.sp
                 )
                 Text(
                     text = "Explore what you can do with your phone",
                     modifier = Modifier
                         .padding(4.dp),
-                    fontSize = 9.sp
+                    fontSize = 14.sp
                 )
             }
         }
@@ -139,7 +148,7 @@ fun YellowCard(bitmap: Bitmap) {
 }
 
 @Composable
-fun SearchLine(bitmap: Bitmap) {
+fun SearchLine(painter: Painter) {
     Box(
         modifier = Modifier
             .padding(10.dp, 0.dp, 10.dp, 10.dp)
@@ -152,12 +161,12 @@ fun SearchLine(bitmap: Bitmap) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                bitmap = bitmap.asImageBitmap(),
+                painter = painter,
                 contentDescription = "Logo",
                 modifier = Modifier
                     .width(40.dp)
                     .height(40.dp)
-                    .padding(10.dp)
+                    .padding(6.dp)
             )
 
             Text(
@@ -171,7 +180,7 @@ fun SearchLine(bitmap: Bitmap) {
 }
 
 @Composable
-fun SettingsElement(bitmap: Bitmap, title: String, text: String) {
+fun SettingsElement(painter: Painter, title: String, text: String) {
     Box(
         modifier = Modifier
             .padding(10.dp)
@@ -182,7 +191,7 @@ fun SettingsElement(bitmap: Bitmap, title: String, text: String) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                bitmap = bitmap.asImageBitmap(),
+                painter = painter,
                 contentDescription = "Logo",
                 modifier = Modifier
                     .width(50.dp)
