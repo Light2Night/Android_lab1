@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -69,7 +71,6 @@ fun Body() {
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.End
         ) {
             Image(
@@ -89,7 +90,38 @@ fun Body() {
             fontSize = 20.sp
         )
 
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Yellow, RoundedCornerShape(10.dp))
+                .padding(10.dp)
+        ) {
+            Image(
+                bitmap = bMap.asImageBitmap(),
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .width(51.dp)
+                    .height(51.dp)
+                    .padding(10.dp)
+            )
 
+            Column(
+
+            ) {
+                Text(
+                    text = "Get to know your Pixel",
+                    modifier = Modifier
+                        .padding(4.dp),
+                    fontSize = 12.sp
+                )
+                Text(
+                    text = "Explore what you can do with your phone",
+                    modifier = Modifier
+                        .padding(4.dp),
+                    fontSize = 8.sp
+                )
+            }
+        }
     }
 }
 
